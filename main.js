@@ -47,7 +47,7 @@ function inputBook() {
   function rakBelumSelesaiDibaca(inputBookObject) {
  
     const bookTitle = document.createElement('h3');
-    bookTitle.innerText - inputBookObject.inputBookTitle;
+    bookTitle.innerText = "Judul:" + inputBookObject.inputBookTitle;
  
     const bookAuthor = document.createElement('p');
     bookAuthor.innerText = 'Penulis: ' + inputBookObject.inputBookAuthor;
@@ -104,7 +104,7 @@ function inputBook() {
   function rakSudahSelesaiDibaca(inputBookObject) {
  
     const bookTitle = document.createElement('h3');
-    bookTitle.innerText - inputBookObject.inputBookTitle;
+    bookTitle.innerText = "Judul:" + inputBookObject.inputBookTitle;
  
     const bookAuthor = document.createElement('p');
     bookAuthor.innerText = 'Penulis: ' + inputBookObject.inputBookAuthor;

@@ -64,7 +64,7 @@ function inputBook() {
     bookItem.append(bookTitle, bookAuthor, bookYear, action);
     bookItem.setAttribute('generateIDBook', 'inputBook-$(inputBookObject.generatedIDBook')
  
-    if (inputBookObject.inputBookIsComplete) {
+    if (!inputBookObject.inputBookIsComplete) {
  
       const uncompletedButton = document.createElement('button');
       uncompletedButton.classList.add('green');
@@ -76,7 +76,7 @@ function inputBook() {
  
       const eraseButton = document.createElement('button');
       eraseButton.classList.add('red');
-      eraseButton.innerText = "Hapus"
+      eraseButton.innerText = "Hapus";
  
       eraseButton.addEventListener('click', function () {
         eraseBookFromCompleted(inputBookObject.generateIDBook);
@@ -88,7 +88,7 @@ function inputBook() {
     else {
  
       const checkBookButton = document.createElement('button');
-      checkBookButton.classList.add('check-button', 'action', 'green');
+      checkBookButton.classList.add('green');
  
       checkBookButton.addEventListener('click', function () {
         addBookToCompleted(inputBookObject.generateIDBook);

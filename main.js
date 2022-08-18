@@ -56,27 +56,33 @@ function inputBook() {
     bookYear.innerText = 'Tahun: ' + inputBookObject.inputBookYear;
  
     const bookItem = document.createElement('article');
+    const action = document.createElement('div');
+ 
     bookItem.classList.add('book_item');
-    bookItem.append(bookTitle, bookAuthor, bookYear);
+    action.classList.add('action');
+ 
+    bookItem.append(bookTitle, bookAuthor, bookYear, action);
     bookItem.setAttribute('generateIDBook', 'inputBook-$(inputBookObject.generatedIDBook')
  
     if (inputBookObject.inputBookIsComplete) {
  
       const uncompletedButton = document.createElement('button');
-      uncompletedButton.classList.add('uncompleted-button', 'action', 'green');
+      uncompletedButton.classList.add('green');
+      uncompletedButton.innerText = "Sudah Selesai Dibaca?";
  
       uncompletedButton.addEventListener('click', function () {
         undoBookFromCompleted(inputBookObject.generateIDBook);
       });
  
       const eraseButton = document.createElement('button');
-      eraseButton.classList.add('erase-button', 'action', 'red');
+      eraseButton.classList.add('red');
+      eraseButton.innerText = "Hapus"
  
       eraseButton.addEventListener('click', function () {
         eraseBookFromCompleted(inputBookObject.generateIDBook);
       });
  
-      bookItem.append(uncompletedButton, eraseButton);
+      action.append(uncompletedButton, eraseButton);
     }
  
     else {

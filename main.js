@@ -116,6 +116,8 @@ function inputBook() {
     const action = document.createElement('div');
 
     bookItem.classList.add('book_item');
+    action.classList.add('action');
+    
     bookItem.append(bookTitle, bookAuthor, bookYear, action);
     bookItem.setAttribute('generateIDBook', 'inputBook-$(inputBookObject.generatedIDBook')
  
@@ -123,7 +125,7 @@ function inputBook() {
  
       const uncompletedButton = document.createElement('button');
       uncompletedButton.classList.add('green');
-      uncompletedButton.innerText = "Belum Selesai Dibaca";
+      uncompletedButton.innerText = "Belum Selesai Dibaca?";
  
       uncompletedButton.addEventListener('click', function () {
         undoBookFromCompleted(inputBookObject.generateIDBook);

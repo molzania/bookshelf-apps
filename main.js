@@ -196,4 +196,16 @@ function inputBook() {
     }
   });
 
-  // 3. Menghapus buku dari rak
+  // 3. Memindahkan Buku Antar Rak
+
+
+  // 4. Menghapus buku dari rak
+
+  function eraseBookFromCompleted(bookId) {
+    const bookTarget = findBooks(bookId);
+
+    if (bookTarget === -1) return;
+
+    inputBooks.splice(bookTarget, 1);
+    document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  };

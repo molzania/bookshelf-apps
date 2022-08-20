@@ -123,12 +123,12 @@ function inputBook() {
  
     if (inputBookObject.inputBookIsComplete) {
  
-      const completedButton = document.createElement('button');
-      completedButton.classList.add('green');
-      completedButton.innerText = "Belum Selesai Dibaca?";
+      const uncompletedButton = document.createElement('button');
+      uncompletedButton.classList.add('green');
+      uncompletedButton.innerText = "Belum Selesai Dibaca?";
        
       completedButton.addEventListener('click', function () {
-          addBookToCompleted(inputBookObject.generateIDBook);
+          undoBookFromCompleted(inputBookObject.generateIDBook);
       });
  
       const eraseButton = document.createElement('button');
@@ -139,7 +139,7 @@ function inputBook() {
         eraseBookFromCompleted(inputBookObject.generateIDBook);
       });
  
-      action.append(completedButton, eraseButton);
+      action.append(uncompletedButton, eraseButton);
     }
  
     else {

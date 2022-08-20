@@ -198,7 +198,16 @@ function inputBook() {
 
   // 3. Memindahkan Buku Antar Rak
 
+function undoBookFromCompleted(bookId) {
+  
+  const bookTarget = findBooks(bookId);
+  
+  if (bookId == null) return;
 
+  bookTarget.inputBookIsComplete = false;
+  document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  
+}
   // 4. Menghapus buku dari rak
 
   function eraseBookFromCompleted(bookId) {

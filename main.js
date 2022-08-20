@@ -66,12 +66,12 @@ function inputBook() {
  
     if (!inputBookObject.inputBookIsComplete) {
  
-      const uncompletedButton = document.createElement('button');
-      uncompletedButton.classList.add('green');
-      uncompletedButton.innerText = "Sudah Selesai Dibaca?";
- 
-      uncompletedButton.addEventListener('click', function () {
-        undoBookFromCompleted(inputBookObject.generateIDBook);
+      const completedButton = document.createElement('button');
+      completedButton.classList.add('green');
+      completedButton.innerText = "Belum Selesai Dibaca?";
+       
+      completedButton.addEventListener('click', function () {
+          addBookToCompleted(inputBookObject.generateIDBook);
       });
  
       const eraseButton = document.createElement('button');
@@ -82,7 +82,7 @@ function inputBook() {
         eraseBookFromCompleted(inputBookObject.generateIDBook);
       });
  
-      action.append(uncompletedButton, eraseButton);
+      action.append(completedButton, eraseButton);
     }
  
     else {
@@ -123,12 +123,12 @@ function inputBook() {
  
     if (inputBookObject.inputBookIsComplete) {
  
-      const uncompletedButton = document.createElement('button');
-      uncompletedButton.classList.add('green');
-      uncompletedButton.innerText = "Belum Selesai Dibaca?";
- 
-      uncompletedButton.addEventListener('click', function () {
-        undoBookFromCompleted(inputBookObject.generateIDBook);
+      const completedButton = document.createElement('button');
+      completedButton.classList.add('green');
+      completedButton.innerText = "Belum Selesai Dibaca?";
+       
+      completedButton.addEventListener('click', function () {
+          addBookToCompleted(inputBookObject.generateIDBook);
       });
  
       const eraseButton = document.createElement('button');
@@ -139,7 +139,7 @@ function inputBook() {
         eraseBookFromCompleted(inputBookObject.generateIDBook);
       });
  
-      action.append(uncompletedButton, eraseButton);
+      action.append(completedButton, eraseButton);
     }
  
     else {

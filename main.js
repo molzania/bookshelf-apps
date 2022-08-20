@@ -195,3 +195,5 @@ function inputBook() {
       }
     }
   });
+
+  // 3. Menghapus buku dari rak

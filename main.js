@@ -127,7 +127,7 @@ function inputBook() {
       uncompletedButton.classList.add('green');
       uncompletedButton.innerText = "Belum Selesai Dibaca?";
        
-      completedButton.addEventListener('click', function () {
+      uncompletedButton.addEventListener('click', function () {
           undoBookFromCompleted(inputBookObject.generateIDBook);
       });
  

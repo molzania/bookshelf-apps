@@ -47,14 +47,13 @@ function makeBook(inputBookObject) {
     completedButton.innerText = 'Belum Selesai Dibaca';
     completedButton.addEventListener('click', function () {
       undoBookFromCompleted(inputBookObject.generatedIDBook); //Panggil undo untuk mengubah state ke belum dibaca
-      // Typo seharusnya generatedIDBook
+
     });
   } else {
     // Ketika buku bernilai false artinya belum selesai dibaca
     completedButton.innerText = 'Selesai Dibaca';
     completedButton.addEventListener('click', function () {
       addBookToCompleted(inputBookObject.generatedIDBook); //Panggil add untuk mengubah state ke sudah dibaca
-      // Typo seharusnya generatedIDBook
     });
   }
   // Keluarkan element erase dari if-else
@@ -63,7 +62,7 @@ function makeBook(inputBookObject) {
   eraseButton.innerText = 'Hapus';
   eraseButton.addEventListener('click', function () {
     eraseBookFromCompleted(inputBookObject.generatedIDBook); 
-    
+
   });
   // Button container juga dikeluarkan
   const buttonContainer = document.createElement('div');

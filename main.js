@@ -1,5 +1,6 @@
 const inputBooks = [];
 const RENDER_BOOK_SUBMIT_EVENT = 'render-book-submit-event';
+
 function inputBook() {
   const inputBookTitle = document.getElementById('inputBookTitle').value;
   const inputBookAuthor = document.getElementById('inputBookAuthor').value;
@@ -114,3 +115,13 @@ document.addEventListener(RENDER_BOOK_SUBMIT_EVENT, function () {
     else completedBookshelfList.append(bookElement);
   }
 });
+
+// 5. local storage
+
+//inisialisasi session storage
+
+sessionStorage.setItem();
+
+//untuk local storage
+
+localStorage.setItem();

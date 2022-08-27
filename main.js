@@ -1,5 +1,7 @@
 const inputBooks = [];
 const RENDER_BOOK_SUBMIT_EVENT = 'render-book-submit-event';
+const SAVED_BOOK_EVENT = 'save-book-submit-event';
+const STORAGE_BOOK_KEY = 'BOOKSHELF-APPS';
 
 function inputBook() {
   const inputBookTitle = document.getElementById('inputBookTitle').value;
@@ -10,6 +12,7 @@ function inputBook() {
   const inputBookObject = generateinputBookObject(generatedIDBook, inputBookTitle, inputBookAuthor, inputBookYear, inputBookIsComplete);
   inputBooks.push(inputBookObject);
   document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  saveBook()
 }
 function generateIDBook() {
   return +new Date();
@@ -82,18 +85,21 @@ function addBookToCompleted(bookId) {
   if (bookTarget == null) return;
   bookTarget.inputBookIsComplete = true;
   document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  saveBook();
 }
 function undoBookFromCompleted(bookId) {
   const bookTarget = findBooks(bookId);
   if (bookTarget == null) return;
   bookTarget.inputBookIsComplete = false;
   document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  saveBook();
 }
 function eraseBookFromCompleted(bookId) {
   const bookTarget = findBooks(bookId);
   if (bookTarget === -1) return;
   inputBooks.splice(bookTarget, 1);
   document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+  saveBook();
 }
 // Submit Input Form
 // Pindahkan ke sebelum RENDER_BOOK_SUBMIT_EVENT
@@ -118,10 +124,23 @@ document.addEventListener(RENDER_BOOK_SUBMIT_EVENT, function () {
 
 // 5. local storage
 
-//inisialisasi session storage
+//function check storage
+function saveBook() {
+  if (bookStorageExist()) {
+    const parsed = JSON.stringify(inputBooks);
+    localStorage.setItem(STORAGE_BOOK_KEY, parsed);
+    document.dispatchEvent(new Event(SAVED_BOOK_EVENT));
+  }
+}
 
-sessionStorage.setItem();
+function bookStorageExist() /* boolean */ {
+  if (typeof (Storage) === undefined) {
+    alert('Browser kamu tidak mendukung local storage');
+    return false;
+  }
+  return true;
+}
 
-//untuk local storage
-
-localStorage.setItem();
+document.addEventListener(SAVED_BOOK_EVENT, function () {
+  console.log(localStorage.getItem(STORAGE_BOOK_KEY));
+});

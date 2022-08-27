@@ -62,7 +62,8 @@ function makeBook(inputBookObject) {
   eraseButton.classList.add('red');
   eraseButton.innerText = 'Hapus';
   eraseButton.addEventListener('click', function () {
-    eraseBookFromCompleted(inputBookObject.generatedIDBook); // Typo seharusnya generatedIDBook
+    eraseBookFromCompleted(inputBookObject.generatedIDBook); 
+    
   });
   // Button container juga dikeluarkan
   const buttonContainer = document.createElement('div');
@@ -109,7 +110,11 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     inputBook();
   });
+  if (bookStorageExist()) {
+    loadBookFromStorage();
+  }
 });
+
 document.addEventListener(RENDER_BOOK_SUBMIT_EVENT, function () {
   const incompletedBookshelfList = document.getElementById('incompleteBookshelfList');
   incompleteBookshelfList.innerHTML = '';
@@ -144,3 +149,16 @@ function bookStorageExist() /* boolean */ {
 document.addEventListener(SAVED_BOOK_EVENT, function () {
   console.log(localStorage.getItem(STORAGE_BOOK_KEY));
 });
+
+function loadBookFromStorage() {
+  const bookData = localStorage.getItem(STORAGE_BOOK_KEY);
+  let data = JSON.parse(bookData);
+ 
+  if (data !== null) {
+    for (const book of data) {
+      inputBooks.push(book);
+    }
+  }
+ 
+  document.dispatchEvent(new Event(RENDER_BOOK_SUBMIT_EVENT));
+}

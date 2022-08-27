@@ -47,7 +47,6 @@ function makeBook(inputBookObject) {
     completedButton.innerText = 'Belum Selesai Dibaca';
     completedButton.addEventListener('click', function () {
       undoBookFromCompleted(inputBookObject.generatedIDBook); //Panggil undo untuk mengubah state ke belum dibaca
-
     });
   } else {
     // Ketika buku bernilai false artinya belum selesai dibaca
@@ -62,7 +61,7 @@ function makeBook(inputBookObject) {
   eraseButton.innerText = 'Hapus';
   eraseButton.addEventListener('click', function () {
     eraseBookFromCompleted(inputBookObject.generatedIDBook); 
-
+    return alert('Buku telah terhapus!');
   });
   // Button container juga dikeluarkan
   const buttonContainer = document.createElement('div');
